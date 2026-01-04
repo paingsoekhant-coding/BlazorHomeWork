@@ -1,0 +1,12 @@
+﻿@page "/third/{ReceiveText}/{text2}"
+<h3>Summary </h3>
+
+<p>Hello , My name is  <strong>@ReceiveText</strong></p>
+<p>I am  <strong>@text2</strong> years old ...</p>
+
+@code {
+    [Parameter]
+    public string ReceiveText { get; set; } = "";
+    [Parameter]
+    public string text2 { get; set; } = "";
+}

@@ -1,0 +1,31 @@
+﻿@page "/main"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+<h3>Main Component</h3>
+<p>Please Enter Your Name ... </p>
+<input class="form-control w-25" @bind="userText" type="text" placeholder="Type something ..."/>
+
+<br/>
+<br/>
+
+<button class="btn btn-dark text-white me-3" @onclick="ShowText"> Show Text </button>
+
+@if(showResult)
+{
+    <p class="m-4">Hello ,  My Name is <strong> @userText</strong></p>
+}
+
+<button class="btn btn-success" @onclick="NextPage"> Go To Sec Page </button>
+
+
+@code {
+    string userText = "";
+    bool showResult = false;
+
+    void ShowText()
+    {
+        showResult = true;
+    }
+
+    void NextPage() => NavigationManager.NavigateTo($"/sec/{userText}");
+}

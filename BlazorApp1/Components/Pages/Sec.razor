@@ -1,0 +1,25 @@
+﻿@page "/sec/{ReceiveText}"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+
+<h3>Sec Page</h3>
+<p> Welcome !  <strong> @ReceiveText </strong> This is my sec page  </p>
+@if (!string.IsNullOrEmpty(text2))
+{
+    <p>I am <strong>@text2</strong> years old.</p>
+}
+
+<p>Please Enter Your age ...</p>
+
+<input @bind="text2" type="text" placeholder="text something here ..." class="form-control w-25" />
+<br/>
+<button class="btn btn-success" @on @onclick="ThirdPage"> Go To Third Page </button>
+
+@code {
+    string text2 = "";
+    [Parameter]
+    public string ReceiveText { get; set; } = "";
+
+    void ThirdPage() => NavigationManager.NavigateTo($"/third/{ReceiveText}/{text2}");
+}
